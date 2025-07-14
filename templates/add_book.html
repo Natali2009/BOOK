@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}წიგნის დამატება{% endblock %}
+{% block content %}
+<form class=" text-center" method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {% for errors in form.errors.values() %}
+    <div class="alert alert-danger ">
+        {% for errors in errors %}
+        {{ errors }}
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <h2 class="mb-4">ახალი წიგნის დამატება</h2>
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.name(class="form-control", placeholder=form.name.label.text) }}
+    </div>
+    <div class="mb-3">
+        {{ form.price(class="form-control", placeholder=form.price.label.text) }}
+    </div>
+    <div class="mb-3">
+        {{ form.author(class="form-control", placeholder=form.author.label.text) }}
+    </div>
+    <div class="mb-3">
+        {{ form.image(class="form-control", placeholder=form.image.label.text) }}
+    </div>
+    <div class="mb-3">
+        {{ form.description(class="form-control", placeholder=form.description.label.text) }}
+    </div>
+     <div class="mb-3">
+        {{ form.genre(class="form-control", placeholder=form.genre.label.text) }}
+    </div>
+     <div class="mb-3">
+        {{ form.time(class="form-control", placeholder=form.time.label.text) }}
+    </div>
+     <div class="mb-3">
+        {{ form.character(class="form-control", placeholder=form.character.label.text) }}
+    </div>
+     <div class="mb-3">
+        {{ form.ending(class="form-control", placeholder=form.ending.label.text) }}
+    </div>
+     <div class="mb-3">
+        {{ form.purpose(class="form-control", placeholder=form.purpose.label.text) }}
+    </div>
+     <div class="mb-3">
+         {{ form.is_brillant(class="form-check-input") }}
+          <label class="form-check-label">{{ form.is_brillant.label.text }}</label>
+    </div>
+     <div class="mb-3">
+        {{ form.emotion(class="form-control", placeholder=form.emotion.label.text) }}
+    </div>
+    <div class="mb-3">
+        {{ form.submit(class="btn btn-success") }}
+    </div>
+</form>
+{% endblock %}

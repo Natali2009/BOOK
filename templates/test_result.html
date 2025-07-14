@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center"> რეკომენდაცია შენთვის </h2>
+    {% if message %}
+    <div class="alert alert-warning text-center">{{ message }}</div>
+    {% endif %}
+    {% if book %}
+    <div class="card p-4 shadow mt-4">
+        <h4 class="text-center text-success">{{ book.name }}</h4>
+        <p class="text-center"><em>ავტორი: {{ book.author }}</em></p>
+        <p>{{ book.description }}</p>
+        {% if book.image %}
+        <img src="{{ url_for('static', filename='images/' + book.image) }}" alt="{{ book.name }}"
+             class="img-fluid mx-auto d-block" style="max-height: 300px;">
+        {% endif %}
+        <div class="alert alert-warning text-center mt-4">
+            <p>{{ recommendation }}</p>
+            <p class="text-center mt-3">მადლობა ტესტის შევსებისთვის! იმედია მოგეწონება ეს წიგნი 😊</p>
+        </div>
+        {% else %}
+        <div class="alert alert-warning text-center mt-4">
+            <p class="text-center mt-3">"წიგნები ვერ მოიძებნა კატალოგში."</p>
+            <a href="/test" class="btn btn-primary w-20">თუ გსურს შეგიძლია ტესტი თავიდან გაიარო</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

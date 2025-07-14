@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>ავტორის დამატება</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {% for errors in form.errors.values() %}
+        <div class="alert alert-danger ">
+            {% for errors in errors %}
+            {{ errors }}
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <div class="mb-3">
+            {{ form.name(class="form-control", placeholder=form.name.label.text) }}
+        </div>
+        <div class="mb-3">
+            {{ form.bio(class="form-control", placeholder=form.bio.label.text) }}
+        </div>
+        <div class="mb-3">
+            {{ form.image(class="form-control", placeholder=form.image.label.text) }}
+        </div>
+
+        {{ form.submit(class="btn btn-success") }}
+    </form>
+</div>
+{% endblock %}

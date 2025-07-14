@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}რეგისტრაცია{% endblock %}
+{% block content %}
+<form class=" text-center" method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {% for errors in form.errors.values() %}
+    <div class = "alert alert-danger ">
+      {% for errors in errors %}
+           {{ errors }}
+      {% endfor %}
+    </div>
+    {% endfor %}
+
+    <h2 class="text-center">შექმენი ანგარიში</h2>
+    <div class="form-container">
+        <div class="mb-3  col-lg-4 mx-auto ">
+            {{ form.profile_img(class="form-control") }}
+        </div>
+        <div class="mb-3 col-lg-4 mx-auto ">
+            {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+        </div>
+        <div class="mb-3  col-lg-4 mx-auto ">
+            {{ form.email(class="form-control", placeholder=form.email.label.text) }}
+        </div>
+        <div class="mb-3  col-lg-4 mx-auto ">
+            {{ form.phone_number(class="form-control", placeholder=form.phone_number.label.text) }}
+        </div>
+        <div class="mb-3  col-lg-4 mx-auto ">
+            {{ form.birthdate(class="form-control", placeholder=form.birthdate.label.text) }}
+        </div>
+        <div class="mb-3  col-lg-4 mx-auto ">
+            {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+        </div>
+        <div class="mb-3  col-lg-4 mx-auto ">
+            {{ form.confirm_password(class="form-control", placeholder=form.confirm_password.label.text) }}
+        </div>
+        <div class=" col-lg-2 mx-auto w-20 ">
+            {{ form.submit(class="form-control btn btn-dark") }}
+        </div>
+    </div>
+</form>
+{% endblock %}

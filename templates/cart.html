@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-center">🛒 შენი კალათა</h2>
+{% if cart_items %}
+<div class="card mb-3 p-3 shadow-sm">
+    <ul class="list-group ">
+        {% for item in cart_items %}
+        <div class="container">
+            <h4><p><a href="/book_detail/{{ item.book.id }}">{{ item.book.name }}</a></p></h4>
+            <p> რაოდენობა: {{ item.quantity }}</p>
+            <p>{{ item.book.price }}₾</p>
+            <form action="/remove_from_cart/{{ item.book.id }}" method="POST">
+                <button type="submit" class="btn btn-outline-danger btn-sm">წაშლა კალათიდან</button>
+            </form>
+        </div>
+        {% endfor %}
+    </ul>
+</div>
+<div class="card mb-3 p-3 shadow-sm">
+    <h4 class="text-center">სულ გადასახდელი: {{ total }}₾</h4>
+    <a href="/checkout" class="btn btn-danger mb-3 ">გადახდაზე გადასვლა</a>
+</div>
+{% else %}
+<p class="text-center">კალათა ცარიელია.</p>
+{% endif %}
+{% endblock %}

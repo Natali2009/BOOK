@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data" class="container mt-4 text-center">
+    <h1>{{ author.name }}</h1>
+    <img src="/static/images/{{ author.image }}" class="rounded-circle" width="200" height="240" alt="{{ author.name }}">
+    <div class="mt-4">
+        <p>{{ author.bio }}</p>
+    </div>
+    <a href="/" class="btn btn-outline-secondary mt-3">მთავარ გვერდზე დაბრუნება</a>
+</form>
+{% endblock %}

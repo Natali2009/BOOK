@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}ავტორიზაცია{% endblock %}
+{% block content %}
+<form class=" text-center" method="post">
+    {{ form.hidden_tag() }}
+    {% for errors in form.errors.values() %}
+    <div class="alert alert-danger ">
+        {% for errors in errors %}
+           {{ errors }}
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <h2>ავტორიზაცია</h2>
+    <div>
+        <div class="mb-3 col-lg-4 mx-auto ">
+            {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+        </div>
+        <div class="mb-3 col-lg-4 mx-auto ">
+            {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+        </div>
+        <div class=" col-lg-2 mx-auto w-20 ">
+            {{ form.submit(class="form-control btn btn-dark") }}
+        </div>
+    </div>
+    <div class="text-center col-lg-4 mx-auto">
+        <small>არ ხარ დარეგისტრირებული?? <a href="/register">რეგისტრაცია</a></small>
+    </div>
+</form>
+{% endblock %}

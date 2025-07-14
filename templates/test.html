@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    {% if message %}
+    <div class="alert alert-warning text-center">{{ message }}</div>
+    {% endif %}
+    <h2 class="text-center"> წიგნის რეკომენდაციის ტესტი</h2>
+    <h5 class="text-center"> რომელი წიგნი გიხდება შენ? </h5>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.hidden_tag() }}
+        {% for errors in form.errors.values() %}
+        <div class="alert alert-danger ">
+            {% for errors in errors %}
+              {{ errors }}
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <div class="mb-3">
+            {{ form.genre.label }}
+            {{ form.genre() }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.time.label }}
+            {{ form.time() }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.character.label }}
+            {{ form.character() }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.ending.label }}
+            {{ form.ending() }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.purpose.label }}
+            {{ form.purpose() }}
+        </div>
+        {{ form.submit(class="btn btn-primary w-100") }}
+    </form>
+</div>
+{% endblock %}
